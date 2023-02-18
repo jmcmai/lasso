@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST={"../node_modules/convex/dist/esm/browser/http_client.js -> node-fetch":{"id":"../node_modules/convex/dist/esm/browser/http_client.js -> node-fetch","files":["static/chunks/node_modules_node-fetch_browser_js.js"]}}
