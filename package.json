@@ -10,9 +10,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^1.12.1",
+    "bootstrap": "^5.2.3",
     "convex": "0.9.1",
     "next": "latest",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {

@@ -1,15 +1,20 @@
-import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+import { ConvexReactClient } from 'convex/react'
+import { ConvexProviderWithAuth0 } from "convex/react-auth0";
+import convexConfig from "../convex.json";
+import Layout from '../components/Layout';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/globals.css'
 
-import { ConvexProvider, ConvexReactClient } from 'convex/react'
-const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL)
+const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL as string)
+const authInfo = convexConfig.authInfo[0];
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function CowboyPewPew({ Component, pageProps }: AppProps) {
   return (
-    <ConvexProvider client={convex}>
-      <Component {...pageProps} />
-    </ConvexProvider>
+    <ConvexProviderWithAuth0 client={convex} authInfo={authInfo}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>   
+    </ConvexProviderWithAuth0>
   )
 }
-
-export default MyApp

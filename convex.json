@@ -3,5 +3,10 @@
   "team": "treehacks-2023",
   "prodUrl": "https://jovial-cormorant-575.convex.cloud",
   "functions": "convex/",
-  "authInfo": []
+  "authInfo": [
+    {
+      "domain": "https://dev-6huwnppz7pgz5wml.us.auth0.com/",
+      "applicationID": "4Sjm7vXYGI9zKNwmxRhkMvVpQa4MePA4"
+    }
+  ]
 }
