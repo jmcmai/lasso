@@ -1,11 +1,13 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { useMutation, useQuery } from '../convex/_generated/react'
+import Badge from '../components/Badge'
 
 export default function App() {
-  const messages = useQuery('listMessages') || []
+  const notes = useQuery('getNotes') || []
 
-  const [newMessageText, setNewMessageText] = useState('')
-  const sendMessage = useMutation('sendMessage')
+  const [newNoteText, setNewNoteText] = useState('')
+  const [newNoteTitle, setNewNoteTitle] = useState('')
+  const addNote = useMutation('addNote')
 
   const [name, setName] = useState('user')
 
@@ -13,33 +15,36 @@ export default function App() {
     setName('User ' + Math.floor(Math.random() * 10000))
   }, [])
 
-  async function handleSendMessage(event: FormEvent) {
+  async function handleAddNote(event: FormEvent) {
     event.preventDefault()
-    setNewMessageText('')
-    await sendMessage(newMessageText, name)
+    setNewNoteText('')
+    await addNote(newNoteText, name)
   }
   return (
     <main>
-      <h1>Convex Chat</h1>
-      <p className="badge">
-        <span>{name}</span>
-      </p>
+      <h1>Lasso</h1>
+      <Badge />
       <ul>
-        {messages.map((message) => (
-          <li key={message._id.toString()}>
-            <span>{message.author}:</span>
-            <span>{message.body}</span>
-            <span>{new Date(message._creationTime).toLocaleTimeString()}</span>
+        {notes.map((note:any) => (
+          <li key={note._id.toString()}>
+            <span>{note.title}:</span>
+            <span>{note.body}</span>
+            <span>{new Date(note._creationTime).toLocaleTimeString()}</span>
           </li>
         ))}
       </ul>
-      <form onSubmit={handleSendMessage}>
+      <form onSubmit={handleAddNote}>
         <input
-          value={newMessageText}
-          onChange={(event) => setNewMessageText(event.target.value)}
-          placeholder="Write a message…"
+          value={newNoteTitle}
+          onChange={(event) => setNewNoteTitle(event.target.value)}
+          placeholder="Write a title…"
         />
-        <input type="submit" value="Send" disabled={!newMessageText} />
+        <input
+          value={newNoteText}
+          onChange={(event) => setNewNoteText(event.target.value)}
+          placeholder="Add your notes…"
+        />
+        <input type="submit" value="Send" disabled={!newNoteText} />
       </form>
     </main>
   )
