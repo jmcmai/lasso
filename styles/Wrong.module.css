@@ -9,7 +9,7 @@
     animation: play-sprite-sheet 1s steps(15) infinite;
     width: 480px;
     height: 270px;
-    background-image: url('./wrong-sprites.png');
+    background-image: url('/wrong-sprites.png');
     background-position: calc(-480px * var(--current-frame)) 0;
   }
   

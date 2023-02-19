@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Wrong.module.css';
 
-import chat from './chatbox.png';
-
 export default function Incorrect() {
   const [currentFrame, setCurrentFrame] = useState(0);
 
