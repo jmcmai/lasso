@@ -19,7 +19,7 @@ import { mutation } from "./_generated/server";
 
 // TODO: maybe add params for username (also change schema)
 
-export default mutation(async ({ db, auth }, profileUrl ) => {
+export default mutation(async ({ db, auth }, ) => {
   const identity = await auth.getUserIdentity();
   if (!identity) {
     throw new Error("Called storeUser without authentication present");
@@ -32,6 +32,7 @@ export default mutation(async ({ db, auth }, profileUrl ) => {
       q.eq("tokenIdentifier", identity.tokenIdentifier)
     )
     .unique();
+
   if (user !== null) {
     // If we've seen this identity before but the name has changed, patch the value.
     if (user.name != identity.name) {
@@ -42,7 +43,6 @@ export default mutation(async ({ db, auth }, profileUrl ) => {
   // If it's a new identity, create a new `User`.
   return db.insert("users", {
     name: identity.givenName!,
-    profilePic: profileUrl,
     tokenIdentifier: identity.tokenIdentifier,
   });
 });

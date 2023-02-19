@@ -7,18 +7,18 @@ import { mutation } from "./_generated/server";
  *  Params:
  *      noteId (string): the note's unique ID for the note to be deleted
  */
-export default mutation(async ({ db, auth }, noteId: string) => {
+export default mutation(async ({ db, auth }, noteId: Id<"notes">) => {
   const user: Document<"users"> | null = await getUser({ db, auth });
 
   if (!user) {
     throw new Error("User is not in the database!");
   }
 
-  // Delete associated notes
-  const notes = await db
-    .query("notes")
-    .withIndex("by_noteId", (q) => q.eq("noteId", noteId))
-    .collect();
+  // Delete associated note
+  const note = await db.get(noteId);
+  if (note === null) {
+    throw new Error("This note does not exist!");
+  }
 
-  await Promise.all(notes.map((note) => db.delete(note._id)));
+  await db.delete(note._id);
 });

@@ -11,7 +11,7 @@ import { config } from 'dotenv'
  *      noteId (string): the note to be passed into the OpenAI API
  * 
  *  Returns:
- *      map: keys = ['] 
+ *      map: { 'question': (string), 'answers': [(string)], 'correctAnswer':(string) } 
  */
 
 // TODO: Change noteId into ID variable, figure out how to assign noteID's
@@ -28,9 +28,6 @@ export default mutation(
     if (user === null) {
       throw new Error("User does not exist in DB!");
     }
-
-    // Configures .env files
-    config()
 
     // Prompt
     const le_prompt = "Below are notes a student took during class.\n\n" + notes + "\nAdapting concepts from these notes, \
