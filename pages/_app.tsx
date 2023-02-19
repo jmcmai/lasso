@@ -1,15 +1,37 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
+
 import type { AppProps } from 'next/app'
+import { ConvexReactClient } from 'convex/react'
+import { ConvexProviderWithAuth0 } from "convex/react-auth0";
+import convexConfig from "../convex.json";
 
-import { ConvexProvider, ConvexReactClient } from 'convex/react'
-const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL)
+import Layout from '../components/Layout';
+import LoginPage from './_login';
+import styles from "../styles/Home.module.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
+const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL as string)
+const authInfo = convexConfig.authInfo[0];
+
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ConvexProvider client={convex}>
+    <ConvexProviderWithAuth0
+      client={convex}
+      authInfo={authInfo}
+      loading={<Loading />}
+      loggedOut={<LoginPage />}
+    >
+    <Layout>
       <Component {...pageProps} />
-    </ConvexProvider>
+    </Layout>
+    </ConvexProviderWithAuth0>
   )
 }
 
-export default MyApp
+function Loading() {
+  return (
+    <div className={styles.loadingLayout}>
+      <div className={styles.loading} />
+    </div>
+  );
+}
