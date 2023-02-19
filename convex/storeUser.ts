@@ -11,6 +11,14 @@ import { mutation } from "./_generated/server";
  * application developer to determine which ones are available and to decide
  * which of those need to be persisted.
  */
+
+/*
+ *  Params:
+ *      profileUrl (string): the url for the profile picture
+ */
+
+// TODO: maybe add params for username (also change schema)
+
 export default mutation(async ({ db, auth }, profileUrl ) => {
   const identity = await auth.getUserIdentity();
   if (!identity) {
@@ -33,7 +41,7 @@ export default mutation(async ({ db, auth }, profileUrl ) => {
   }
   // If it's a new identity, create a new `User`.
   return db.insert("users", {
-    name: identity.name,
+    name: identity.givenName!,
     profilePic: profileUrl,
     tokenIdentifier: identity.tokenIdentifier,
   });
