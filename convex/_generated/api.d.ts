@@ -10,8 +10,13 @@
  */
 
 import type { ApiFromModules } from "convex/api";
-import type * as getNotes from "../getNotes";
 import type * as addNote from "../addNote";
+import type * as common from "../common";
+import type * as deleteNote from "../deleteNote";
+import type * as getNotes from "../getNotes";
+import type * as getPastQuestions from "../getPastQuestions";
+import type * as storePastQuestions from "../storePastQuestions";
+import type * as storeUser from "../storeUser";
 
 /**
  * A type describing your app's public Convex API.
@@ -23,6 +28,11 @@ import type * as addNote from "../addNote";
  * `ConvexReactClient` to create app-specific types.
  */
 export type API = ApiFromModules<{
-  getNotes: typeof getNotes;
   addNote: typeof addNote;
+  common: typeof common;
+  deleteNote: typeof deleteNote;
+  getNotes: typeof getNotes;
+  getPastQuestions: typeof getPastQuestions;
+  storePastQuestions: typeof storePastQuestions;
+  storeUser: typeof storeUser;
 }>;

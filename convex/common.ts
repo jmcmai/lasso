@@ -1,5 +1,4 @@
 import { Auth } from "convex/server";
-
 import { Document, Id } from "./_generated/dataModel";
 import { DatabaseReader } from "./_generated/server";
 
