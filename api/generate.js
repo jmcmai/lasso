@@ -5,7 +5,8 @@ import { config } from "dotenv"
 config()
 
 // Notes
-let notes = "The mitochondria is the powerhouse of the cell \n My dog likes to eat chocolate \n Pie is sweet";  // # TODO: set up notes retrieval from frontend
+// # TODO: set up notes retrieval from frontend
+let notes = "The mitochondria is the powerhouse of the cell \n My dog likes to eat chocolate \n Pie is sweet"; 
 
 // Prompt
 const le_prompt = "Below are notes a student took during class.\n\n" + notes + "\nAdapting concepts from these notes, \
