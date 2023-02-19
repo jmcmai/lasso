@@ -1,0 +1,42 @@
+.animationwrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* center horizontally */
+    padding-bottom: 50px;
+  }
+
+.animation {
+    animation: play-sprite-sheet 0.5s steps(8) infinite;
+    width: 480px;
+    height: 270px;
+    background-image: url('/correct-sprites.png');
+    background-position: calc(-480px * var(--current-frame)) 0;
+  }
+  
+  @keyframes play-sprite-sheet {
+    from { background-position: 0 0; }
+    to { background-position: -3840px 0; } /* 8 frames * 96 pixels = 768 pixels */
+  }
+
+  .chatwrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* center horizontally */
+    background-color: lightgrey;
+    width: 60%;
+    margin: auto;
+  }
+
+  .chatwrapper .feedback {
+    z-index: 1;
+    text-align: center;
+    line-height: 1.5;
+  }
+  
+  .nextbtn {
+    left: 70%;
+    position: relative;
+    display: flex;
+    margin: 10px;
+  }
+  

@@ -1,0 +1,49 @@
+.quiz {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .questioncount {
+    margin-top: 50px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .questiontext {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 50px;
+    margin-bottom: 20px;
+    background-color: lightgray;
+  }
+  
+  .answerbutton {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .answerbutton:hover {
+    background-color: lightgray
+  }
+
+  .scoresection {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px; /* Set a fixed height for the score section */
+  } 

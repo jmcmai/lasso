@@ -1,8 +1,8 @@
 import React from 'react'
-import { FormEvent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useMutation, useQuery } from '../convex/_generated/react'
 import { Id } from "../convex/_generated/dataModel";
-import Badge from '../components/Badge'
+import styles from "../styles/Home.module.css";
 
 export default function App() {
   // test user
@@ -22,42 +22,18 @@ export default function App() {
 
   const notes = useQuery('getNotes') || []
 
-  const [newNoteText, setNewNoteText] = useState('')
-  const [newNoteTitle, setNewNoteTitle] = useState('')
-  const addNote = useMutation('addNote')
-
-  async function handleAddNote(event: FormEvent) {
-    event.preventDefault()
-    setNewNoteTitle('')
-    setNewNoteText('')
-    await addNote(newNoteTitle, newNoteText)
-  }
   return (
     <main>
-      <h1>Lasso</h1>
-      <Badge />
+      <h1>Choose a Set to Study</h1>
       <ul>
         {notes.map((note:any) => (
           <li key={note._id.toString()}>
-            <span>{note.title}:</span>
+            <span>{note.title}</span>
             <span>{note.noteContent}</span>
             <span>{new Date(note._creationTime).toLocaleTimeString()}</span>
           </li>
         ))}
       </ul>
-      <form onSubmit={handleAddNote}>
-        <input
-          value={newNoteTitle}
-          onChange={(event) => setNewNoteTitle(event.target.value)}
-          placeholder="Write a title…"
-        />
-        <input
-          value={newNoteText}
-          onChange={(event) => setNewNoteText(event.target.value)}
-          placeholder="Add your notes…"
-        />
-        <input type="submit" value="Send" disabled={!newNoteText} />
-      </form>
     </main>
   )
 }
