@@ -13,6 +13,7 @@ import type { ApiFromModules } from "convex/api";
 import type * as addNote from "../addNote";
 import type * as common from "../common";
 import type * as deleteNote from "../deleteNote";
+import type * as generateQuestion from "../generateQuestion";
 import type * as getNotes from "../getNotes";
 import type * as getPastQuestions from "../getPastQuestions";
 import type * as storePastQuestions from "../storePastQuestions";
@@ -31,6 +32,7 @@ export type API = ApiFromModules<{
   addNote: typeof addNote;
   common: typeof common;
   deleteNote: typeof deleteNote;
+  generateQuestion: typeof generateQuestion;
   getNotes: typeof getNotes;
   getPastQuestions: typeof getPastQuestions;
   storePastQuestions: typeof storePastQuestions;

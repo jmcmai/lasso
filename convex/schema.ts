@@ -9,11 +9,9 @@ export default defineSchema({
   }).index("by_userId", ["userId"]),
   notes: defineTable({
     userId: s.string(),
-    noteId: s.string(),
     title: s.string(),
     noteContent: s.string(),
-  }).index("by_userId", ["userId"])
-    .index("by_noteId", ["noteId"]),
+  }).index("by_userId", ["userId"]),
   users: defineTable({
     name: s.string(),
     profilePic: s.string(), // url

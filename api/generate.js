@@ -24,4 +24,24 @@ const response = await openai.createCompletion({
   max_tokens: 256,
 });
 
-console.log(response.data.choices[0].text); 
+// let output = response.data.choices[0];
+// let split_output = output.text.split("\n")
+// console.log(split_output[0]); 
+
+
+// let dict = { "question": output[0],
+//             "answers": [output[1], output[2], output[3], output[4]],
+//             "correctAnswer": output[5]
+//             };
+const output = response.data.choices[0];
+const split_output = output.text?.split("\n");
+
+
+let dict = { "question": split_output[0],
+  "answers": [split_output[1], split_output[2], split_output[3], split_output[4]],
+  "correctAnswer": split_output[5]
+};
+
+console.log(dict["question"])
+console.log(dict["answers"][0])
+console.log(dict["correctAnswer"])

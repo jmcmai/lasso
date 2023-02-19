@@ -14,7 +14,7 @@ import { getUser } from "./common";
 // TODO: Change noteId into ID variable, figure out how to assign noteID's
 export default mutation(
     async (
-        { db, auth }, noteId: string, title: string, noteContent: string
+        { db, auth }, title: string, noteContent: string
     ) => {
       const identity = await auth.getUserIdentity()
       if (!identity) {
@@ -26,9 +26,9 @@ export default mutation(
       throw new Error("User does not exist in DB!");
     }
 
+
     await db.insert("notes", {
-        userId: user._id.toString(), 
-        noteId, 
+        userId: user._id.toString(),
         title, 
         noteContent,
     })
