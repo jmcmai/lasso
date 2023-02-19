@@ -19,7 +19,7 @@ export default query(
     if (user === null) {
       throw new Error("User does not exist in DB!");
     }
-    
+
     const notes: Document<"notes">[] = await db
       .query("notes")
       .withIndex("by_userId", (q) => q.eq("userId", user._id.toString()))
