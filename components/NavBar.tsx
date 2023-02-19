@@ -1,23 +1,34 @@
 import Container from 'react-bootstrap/Container';
-import Link from 'next/link'
+import Link from 'next/link';
+import LogoutButton from './LogoutButton';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-export default function NavBar() {
+export default function () {
   return (
-    <Navbar fixed="top" variant="dark" expand="lg">
+    <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand as={Link} href="/">Stanford</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse>
-            <Nav.Link as={Link} href="/">Home</Nav.Link>
-            <NavDropdown title="People">
-              <NavDropdown.Item as={Link} href="/team">Meet the Team!</NavDropdown.Item>
-              <NavDropdown.Item as={Link} href="/attributions">Attributions</NavDropdown.Item>
-              <NavDropdown.Item as={Link} href="/collaborations">Collaborations</NavDropdown.Item>
+        <Navbar.Brand as={Link} href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link as={Link} href="#home">Home</Nav.Link>
+            <Nav.Link as={Link} href="#link">Link</Nav.Link>
+            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown.Item as={Link} href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item as={Link} href="#action/3.2">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item as={Link} href="#action/3.4">
+                Separated link
+              </NavDropdown.Item>
             </NavDropdown>
+          </Nav>
         </Navbar.Collapse>
+        <LogoutButton />
       </Container>
     </Navbar>
   );

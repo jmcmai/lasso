@@ -11,14 +11,6 @@ export default function Footer() {
           </a>.
         </small>
       </p>
-      <p className="text-center">
-        <small>
-          See the website&rsquo;s repository at&nbsp;
-          <a href="https://gitlab.igem.org/2022/stanford">
-            gitlab.igem.org/2022/stanford
-          </a>.
-        </small>
-      </p>
     </footer>
   );
 }
